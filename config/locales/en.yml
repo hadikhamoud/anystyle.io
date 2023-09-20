@@ -1,7 +1,7 @@
 en:
   title: AnyStyle.io
   description: >-
-    AnyStyle.io parses your biblographies or lists of references regardless of
+    Omar.io parses your biblographies or lists of references regardless of
     citation style and and turns them into structured, bibliographic data.
   keywords: >-
     anystyle, parser, bibliography parser, academic references, citations,
@@ -10,8 +10,7 @@ en:
 
   index:
     claim_html: |-
-      Parses <em>academic references</em> in no time!<br/>
-      Copy &amp; paste your bibliography below to get started …
+     
     github: Star on GitHub
     gem: Install RubyGem
 
@@ -63,7 +62,7 @@ en:
       volume: Volume / Issue
     save:
       title: "3. Save"
-      train: Use my changes to train the parser!
+      train: 
 
   documentation:
     title: Documentation

@@ -21,6 +21,7 @@
                 placeholder: t("parser.source.placeholder"),
                 rows: "10",
                 spellcheck: "false",
+                dir: "auto",
                 "ng-disabled" => "output && !output.$resolved",
                 "ng-class" => "{ pristine: !source }" }
 
@@ -79,11 +80,11 @@
             =hidden_field_tag 'dataset'
             =hidden_field_tag 'format'
             .lead
-              .form-group
-                .checkbox
-                  %label(ng-class="{ disabled: !output.edited }")
-                    %input(type="checkbox" name="reviewed" ng-model="output.reviewed" ng-disabled="!output.edited")
-                    =t "parser.save.train"
+              -# .form-group
+              -#   .checkbox
+              -#     %label(ng-class="{ disabled: !output.edited }")
+              -#       %input(type="checkbox" name="reviewed" ng-model="output.reviewed" ng-disabled="!output.edited")
+              -#       =t "parser.save.train"
 
             .text-center
               %button.btn.btn-success.btn-lg(ng-click="save('csl')" ng-disabled="!output.$resolved") CSL-JSON
