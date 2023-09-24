@@ -42,13 +42,16 @@
             %em= t "parser.editor.title"
       .row.affix-container
         .col-md-8
-          %ul#tokens.list-unstyled
+          %ul#tokens.list-unstyled(dir="auto")
             %li.clearfix(ng-repeat="reference in output | startFrom: offset | limitTo: ipp")
               %span.label{ "ng-repeat" => "token in reference.tokens",
                 "class" => "label-{{token.label}}",
                 "ng-class" => "{ marked: token.marked, 'last-of-label': $last || token.label !== reference.tokens[$index + 1].label}",
                 "ng-dblclick" => "pick(reference, token, $event)",
                 "ng-mousedown" => "mark(reference, token, $event)" } {{token.value}}
+              %hr.separator{ "ng-if" => "!$last", style: "display:inline-block; width: auto; height: 1em; margin: 10px 0; border: none; border-top: 3px solid currentColor;" }
+
+
 
         .col-md-4(style="position: static")
           .sidebar(affix offset-top="30" offset-bottom="30")

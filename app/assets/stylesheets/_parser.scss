@@ -111,21 +111,25 @@
         margin-bottom: 30px;
         margin-left: -4px;
         padding-left: 180px;
+        display: flex;
+        flex-direction: column;
+      
 
         .label {
           position: relative;
           cursor: pointer;
-          font-size: inherit;
+          font-size: 20px;
           font-weight: inherit;
           line-height: 1;
           padding: 0.3em 0.3em 0.4em 0.3em;
           margin-bottom: 4px;
           margin-right: 4px;
-          background: #728c8c; // 0.8 $gray + background
+          background: #758383; // 0.8 $gray + background
           position: relative;
           float: left;
           clear: left;
           margin-bottom: 10px;
+          width: 40%;
 
           &.marked {
             background: $brand-primary;
