@@ -1,6 +1,6 @@
 default: &default
   labels:
-    - author
+    - author 
     - citation-number
     - collection-title
     - container-title

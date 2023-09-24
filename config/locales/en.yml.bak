@@ -37,29 +37,29 @@ en:
       title: "2. Edit"
       tag: Assign label
     labels:
-      author: المؤلف
-      citation-number: xcitation numberx
-      collection-title: اسم السلسلة
-      container-title: عنوان الكتاب الجماعي
-      date: تاريخ النشر  
-      director: xDirectorx
+      author: Author
+      citation-number: Citation number
+      collection-title: Collection title
+      container-title: xontainer title
+      date: Date
+      director: Director
       doi: DOI
-      edition: رقم الطبعة 
-      editor: تحرير
-      genre: xGenrex
-      isbn: xISBNx
-      journal: الدورية
-      location: مكان النشر
-      medium: xMediumx
-      note: xNotex
-      pages: الصفحات
-      producer: xProducerx
-      publisher: الناشر
-      source: xSourcex
-      title: العنوان (كتاب/مقالة)
-      translator: ترجمة
-      url: الرابط الإلكتروني
-      volume: العدد/ المجلد
+      edition: Edition
+      editor: Editor
+      genre: Genre
+      isbn: ISBN
+      journal: Journal
+      location: Location
+      medium: Medium
+      note: Note
+      pages: Pages
+      producer: Producer
+      publisher: Publisher
+      source: Source
+      title: Title
+      translator: Translator
+      url: URL
+      volume: Volume / Issue
     save:
       title: "3. Save"
       train: 

@@ -97,5 +97,7 @@
     .container.fade(ng-class="{ in: selector }")
       .row
         - AnyStyle.labels.each do |label, translation|
+          - if translation.start_with?('x')
+            - next
           .col-md-4
             %button.btn.btn-lg.btn-success.btn-block(ng-mousedown="tag({ name: '#{label}', translation: '#{translation}' })" class="label-#{label}")= translation

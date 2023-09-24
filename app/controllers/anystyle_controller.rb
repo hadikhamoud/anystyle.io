@@ -11,7 +11,8 @@ class AnystyleController < ApplicationController
     input = params.require(:input).taint
 
     if input.length <= Rails.configuration.anystyle.parse_limit
-      render_dataset parser.parse(input, format: 'wapiti')
+      parsed_data = parser.parse(input, format: 'wapiti')
+      render_dataset parsed_data
     else
       bad_request 'status.excessive'
     end
@@ -19,31 +20,39 @@ class AnystyleController < ApplicationController
     response.headers['X-AnyStyle-Last-Modified'] = model_time
   end
 
-  def format
-    input = JSON.parse(params.require(:dataset))
-    sequences = []
 
-    dataset = Wapiti::Dataset.new(input.map { |s|
-      seq = Wapiti::Sequence.new(s['tokens'].map { |t|
-        Wapiti::Token.new t['value'], label: t['label']
-      })
+def format
+  input = JSON.parse(params.require(:dataset))
+  sequences = []
 
-      sequences << Sequence.new(xml: seq.to_xml) if s['pertinent']
+  dataset = Wapiti::Dataset.new(input.map { |s|
+    # Reverse the order of tokens
+    reversed_tokens = s['tokens'].map { |t|
+      Wapiti::Token.new t['value'], label: t['label']
+    }
 
-      seq
-    })
+    seq = Wapiti::Sequence.new(reversed_tokens)
 
-    render_dataset dataset
-  ensure
-    save_training_data sequences if train_model?
-  end
+    sequences << Sequence.new(xml: seq.to_xml) if s['pertinent']
+
+    seq
+  })
+
+  render_dataset dataset
+
+
+ensure
+  save_training_data sequences if train_model?
+end
 
   private
+
 
   def render_dataset(dataset)
     respond_to do |format|
       format.json {
-        render json: dataset.map { |s| s.map { |t| [t.label, t.value] } }
+        json_data = dataset.map { |s| s.map { |t| [t.label, t.value] } }
+        render json: json_data
       }
       format.csl {
         render json: parser.format_csl(dataset, date_format: 'citeproc')
@@ -58,6 +67,7 @@ class AnystyleController < ApplicationController
       }
     end
   end
+
 
   def parser
     AnyStyle.parser
